@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ClientCredentialsService} from "./client-credentials.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'spotify-web-api-playground';
+  readonly tableColumns: string[] = ['Access token', 'Expires in', 'Token type'];
+  readonly spotifyAccessToken$ = this.clientCredentialsService.sendAuthRequest();
+
+  constructor(readonly clientCredentialsService: ClientCredentialsService) { }
 }

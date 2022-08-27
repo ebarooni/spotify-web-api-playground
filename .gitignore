@@ -43,3 +43,4 @@ Thumbs.db
 
 # Project files
 package-lock.json
+src/app/api-secrets/spotify-api-keys.ts
