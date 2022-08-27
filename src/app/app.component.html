@@ -4,7 +4,7 @@
   <div class="flex-fill">
     <mat-toolbar class="mb-4"
                  color="primary">
-      <mat-toolbar-row class="container-xxl px-0">
+      <mat-toolbar-row class="container-xxl">
         <span>Spotify web API demo</span>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -32,14 +32,7 @@
           </table>
         </div>
       </div>
-      <div class="row">
-        <a class="btn btn-success" routerLink="/login">
-          Log in to Spotify
-        </a>
-      </div>
-      <div class="row">
-        <router-outlet></router-outlet>
-      </div>
+      <app-login></app-login>
     </div>
   </div>
 </div>

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./material/material.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ClientCredentialsService} from "./client-credentials.service";
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { RedirectCallbackComponent } from './redirect-callback/redirect-callback.component';
 import { LoginComponent } from './login/login.component';
 

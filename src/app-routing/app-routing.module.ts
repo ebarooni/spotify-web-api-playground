@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {RedirectCallbackComponent} from "./redirect-callback/redirect-callback.component";
-import {LoginComponent} from "./login/login.component";
+import {RedirectCallbackComponent} from "../app/redirect-callback/redirect-callback.component";
 
 const routes: Routes = [
-  {path: 'callback', component: RedirectCallbackComponent},
-  {path: 'login', component: LoginComponent}
+  { path: 'callback', component: RedirectCallbackComponent },
 ]
 
 @NgModule({
