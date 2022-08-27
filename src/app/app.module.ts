@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MaterialModule} from "./material/material.module";
+import {MaterialModule} from "../material/material.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ClientCredentialsService} from "./client-credentials.service";
 import { AppRoutingModule } from '../app-routing/app-routing.module';
