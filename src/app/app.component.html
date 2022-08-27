@@ -10,7 +10,7 @@
     </mat-toolbar>
     <!--The table starts here-->
     <div class="container">
-      <div class="col-md-12">
+      <div class="row">
         <div *ngIf="spotifyAccessToken$ | async as accessTokenObject"
              class="table-responsive">
           <table class="table table-hover table-bordered">
@@ -31,6 +31,14 @@
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="row">
+        <a class="btn btn-success" routerLink="/login">
+          Log in to Spotify
+        </a>
+      </div>
+      <div class="row">
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>
