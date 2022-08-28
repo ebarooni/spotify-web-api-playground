@@ -7,13 +7,13 @@ import {MaterialModule} from "../material/material.module";
 import {HttpClientModule} from "@angular/common/http";
 import {ClientCredentialsService} from "./client-credentials.service";
 import { AppRoutingModule } from '../app-routing/app-routing.module';
-import { RedirectCallbackComponent } from './redirect-callback/redirect-callback.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RedirectCallbackComponent,
+    DashboardComponent,
     LoginComponent
   ],
   imports: [

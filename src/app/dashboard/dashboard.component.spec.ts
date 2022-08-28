@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RedirectCallbackComponent } from './redirect-callback.component';
+import { DashboardComponent } from './dashboard.component';
 
 describe('RedirectCallbackComponent', () => {
-  let component: RedirectCallbackComponent;
-  let fixture: ComponentFixture<RedirectCallbackComponent>;
+  let component: DashboardComponent;
+  let fixture: ComponentFixture<DashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RedirectCallbackComponent ]
+      declarations: [ DashboardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RedirectCallbackComponent);
+    fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

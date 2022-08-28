@@ -3,7 +3,7 @@ import {spotifyApiKeys} from "../api-secrets/spotify-api-keys";
 
 @Injectable()
 export class LoginService {
-  private readonly REDIRECT_URI = 'http://localhost:4200/callback';
+  private readonly REDIRECT_URI = 'http://localhost:4200/dashboard';
 
   constructor() { }
 
