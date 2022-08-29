@@ -4,7 +4,7 @@ import {faGithub, faLinkedin, faStackOverflow} from "@fortawesome/free-brands-sv
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
   readonly currentYear = new Date().getFullYear();
