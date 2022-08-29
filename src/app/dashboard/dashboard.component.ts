@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const code = this.route.snapshot.queryParamMap.get('code');
+    const state = this.route.snapshot.queryParamMap.get('state');
+    console.table({
+      'code': code,
+      'state': state
+    });
   }
-
 }

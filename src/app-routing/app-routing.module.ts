@@ -4,7 +4,11 @@ import {RouterModule, Routes} from "@angular/router";
 import {DashboardComponent} from "../app/dashboard/dashboard.component";
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    title: 'Dashboard | Spotify web API'
+  },
 ]
 
 @NgModule({
