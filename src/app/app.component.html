@@ -1,13 +1,7 @@
-
 <div class="min-vh-100 d-flex flex-column">
-  <!--  The navbar starts here-->
   <div class="flex-fill">
-    <mat-toolbar class="mb-4"
-                 color="primary">
-      <mat-toolbar-row class="container-xxl">
-        <span>Spotify web API demo</span>
-      </mat-toolbar-row>
-    </mat-toolbar>
+    <!--Navbar-->
+    <app-navbar></app-navbar>
     <!--The table starts here-->
     <div class="container">
       <div class="row">
@@ -36,4 +30,6 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+  <!--Footer-->
+  <app-footer></app-footer>
 </div>

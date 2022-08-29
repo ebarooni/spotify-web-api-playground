@@ -9,12 +9,16 @@ import {ClientCredentialsService} from "./client-credentials.service";
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
