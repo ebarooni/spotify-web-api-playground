@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { InputFormComponent } from './client-credentials-flow/input-form/input-form.component';
 import { ClientCredentialsFlowComponent } from './client-credentials-flow/client-credentials-flow.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ClientCredentialsFlowComponent } from './client-credentials-flow/client
     BrowserModule,
     MaterialModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     ClientCredentialsService

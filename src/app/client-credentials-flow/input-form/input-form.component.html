@@ -3,16 +3,23 @@
     Spotify API secrets
   </div>
   <div class="card-body">
-    <div class="input-group mb-3">
-      <span class="input-group-text">Client ID</span>
-      <input matInput type="text" class="form-control">
-    </div>
-    <div class="input-group mb-3">
-      <span class="input-group-text">Client secret</span>
-      <input type="text" class="form-control">
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-warning">Send HTTP post request</button>
-    </div>
+    <form [formGroup]="apiSecretsFormGroup" (ngSubmit)="onSubmit()">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Client ID</span>
+        <input [formControlName]="'clientId'" type="text" class="form-control">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text">Client secret</span>
+        <input [formControlName]="'clientSecret'" type="text" class="form-control">
+      </div>
+      <div class="row mx-auto">
+        <button type="submit"
+                mat-raised-button
+                [color]="'primary'"
+                [disabled]="!apiSecretsFormGroup.valid">
+          Send HTTP post request
+        </button>
+      </div>
+    </form>
   </div>
 </div>
