@@ -14,6 +14,7 @@ import { TableComponent } from './table/table.component';
 import { InputFormComponent } from './client-credentials-flow/input-form/input-form.component';
 import { ClientCredentialsFlowComponent } from './client-credentials-flow/client-credentials-flow.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { ErrorTableComponent } from './table/error-table/error-table.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     NavbarComponent,
     TableComponent,
     InputFormComponent,
-    ClientCredentialsFlowComponent
+    ClientCredentialsFlowComponent,
+    ErrorTableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
-<div class="row" *ngIf="spotifyAccessToken$ | async as accessTokenObject">
+<div class="row" *ngIf="spotifyAccessToken$ | async as accessTokenObject; else errorTable">
   <div class="table-responsive">
     <table class="table table-hover table-bordered">
       <caption class="text-center">Spotify API response</caption>
       <thead>
       <tr>
-        <th scope="col">Keys</th>
-        <th scope="col">Values</th>
+        <th scope="col" class="text-center">Keys</th>
+        <th scope="col" class="text-center">Values</th>
       </tr>
       </thead>
       <tbody>
@@ -17,3 +17,6 @@
     </table>
   </div>
 </div>
+<ng-template #errorTable>
+  <app-error-table [error$]="errorHandler$"></app-error-table>
+</ng-template>

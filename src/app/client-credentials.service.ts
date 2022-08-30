@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {spotifyApiKeys} from "./api-secrets/spotify-api-keys";
-import {Observable} from "rxjs";
+import {catchError, Observable, Subject, throwError} from "rxjs";
 
 export interface AuthRequestPayload {
   url: string,
@@ -17,8 +17,13 @@ export interface SpotifyAuthResponse {
 
 @Injectable()
 export class ClientCredentialsService {
+  private readonly errorHandlerSubject = new Subject<HttpErrorResponse>();
 
   constructor(private http: HttpClient) { }
+
+  get errorHandlerSubject$(): Observable<HttpErrorResponse> {
+    return this.errorHandlerSubject.asObservable();
+  }
 
   private get authRequestPayload(): AuthRequestPayload {
     const buffer = `${spotifyApiKeys.CLIENT_ID}:${spotifyApiKeys.CLIENT_SECRET}`;
@@ -40,6 +45,13 @@ export class ClientCredentialsService {
       this.authRequestPayload.url,
       this.authRequestPayload.body,
       {headers: this.authRequestPayload.headers}
-    );
+    ).pipe(
+      catchError((err) => this.errorHandler(err))
+      );
+  }
+
+  private errorHandler(error: HttpErrorResponse) {
+    this.errorHandlerSubject.next(error);
+    return throwError(() => new Error(error.message));
   }
 }

@@ -16,7 +16,8 @@ export class TableComponent implements OnInit {
         'access_token_info',
         JSON.stringify({access_token: response.access_token, expiration: moment.now()})
       ))
-    )
+    );
+  readonly errorHandler$ = this.clientCredentialsService.errorHandlerSubject$;
 
   constructor(readonly clientCredentialsService: ClientCredentialsService) { }
 
