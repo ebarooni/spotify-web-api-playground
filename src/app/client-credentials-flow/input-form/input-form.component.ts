@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {AuthCredentialsRepository} from "./auth-credentials.repository";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-input-form',
@@ -12,13 +14,32 @@ export class InputFormComponent implements OnInit {
     clientSecret: ['', [Validators.minLength(5), Validators.required]]
   })
 
-  constructor(private readonly fb: FormBuilder) { }
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly authCredentialsRepository: AuthCredentialsRepository
+  ) { }
 
   ngOnInit(): void {
+    this.authCredentialsRepository.authCredentialsStore
+      .pipe(
+        first()
+      )
+      .subscribe(
+        state => {
+          this.apiSecretsFormGroup.get('clientId')?.setValue(state.clientId);
+          this.apiSecretsFormGroup.get('clientSecret')?.setValue(state.clientSecret);
+        }
+      )
   }
 
   onSubmit(): void {
-    console.log(this.apiSecretsFormGroup.value);
+    if (this.apiSecretsFormGroup.value.clientId && this.apiSecretsFormGroup.value.clientSecret) {
+      this.authCredentialsRepository
+        .batchUpdate(
+          this.apiSecretsFormGroup.value.clientId,
+          this.apiSecretsFormGroup.value.clientSecret
+        );
+    }
   }
 
 }
