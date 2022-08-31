@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthCredentialsRepository} from "./auth-credentials.repository";
+import {AuthCredentialsProps, AuthCredentialsRepository} from "./auth-credentials.repository";
 import {filter, take} from "rxjs";
 
 @Component({
@@ -9,6 +9,7 @@ import {filter, take} from "rxjs";
   styleUrls: ['./input-form.component.scss']
 })
 export class InputFormComponent implements OnInit {
+  @Output() authCredentialsPropsEventEmitter = new EventEmitter<AuthCredentialsProps>();
   apiSecretsFormGroup = this.fb.group({
     clientId: ['', [Validators.required]],
     clientSecret: ['', [Validators.required]]
@@ -40,6 +41,7 @@ export class InputFormComponent implements OnInit {
           this.apiSecretsFormGroup.value.clientId,
           this.apiSecretsFormGroup.value.clientSecret
         );
+      this.authCredentialsPropsEventEmitter.emit(<AuthCredentialsProps>this.apiSecretsFormGroup.value);
     }
   }
 

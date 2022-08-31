@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {createStore, setProps, Store, withProps} from "@ngneat/elf";
 
-interface AuthCredentialsProps {
+export interface AuthCredentialsProps {
   clientId: string | null,
   clientSecret: string | null
 }

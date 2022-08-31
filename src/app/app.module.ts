@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {MaterialModule} from "../material/material.module";
 import {HttpClientModule} from "@angular/common/http";
-import {ClientCredentialsService} from "./client-credentials.service";
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -37,7 +36,6 @@ import {AuthCredentialsRepository} from "./client-credentials-flow/input-form/au
     ReactiveFormsModule
   ],
   providers: [
-    ClientCredentialsService,
     AuthCredentialsRepository
   ],
   bootstrap: [AppComponent]
