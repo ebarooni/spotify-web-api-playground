@@ -15,6 +15,7 @@ import { ClientCredentialsFlowComponent } from './client-credentials-flow/client
 import {ReactiveFormsModule} from "@angular/forms";
 import { ErrorTableComponent } from './table/error-table/error-table.component';
 import {AuthCredentialsRepository} from "./client-credentials-flow/input-form/auth-credentials.repository";
+import { WikiComponent } from './client-credentials-flow/wiki/wiki.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {AuthCredentialsRepository} from "./client-credentials-flow/input-form/au
     TableComponent,
     InputFormComponent,
     ClientCredentialsFlowComponent,
-    ErrorTableComponent
+    ErrorTableComponent,
+    WikiComponent
   ],
   imports: [
     BrowserModule,
