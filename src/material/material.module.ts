@@ -3,7 +3,6 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
@@ -12,7 +11,6 @@ import {MatDividerModule} from "@angular/material/divider";
     FontAwesomeModule,
     MatButtonModule,
     MatTooltipModule,
-    MatCardModule,
     MatDividerModule
   ],
   exports: [
@@ -20,7 +18,6 @@ import {MatDividerModule} from "@angular/material/divider";
     FontAwesomeModule,
     MatButtonModule,
     MatTooltipModule,
-    MatCardModule,
     MatDividerModule
   ]
 })
