@@ -41,5 +41,9 @@ export class AuthCredentialsRepository {
         clientSecret: secret
       })
     );
+    localStorage.setItem(
+      this.KEY,
+      JSON.stringify(<AuthCredentialsProps>{clientId: id, clientSecret: secret})
+    );
   }
 }

@@ -39,7 +39,6 @@ export class InputFormComponent implements OnInit {
           this.apiSecretsFormGroup.value.clientId,
           this.apiSecretsFormGroup.value.clientSecret
         );
-      localStorage.setItem(this.authCredentialsRepository.KEY, JSON.stringify(this.apiSecretsFormGroup.value));
     }
   }
 
