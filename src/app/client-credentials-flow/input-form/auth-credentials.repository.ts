@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
-import {createStore, emitOnce, setProps, Store, withProps} from "@ngneat/elf";
-import {localStorageStrategy, persistState} from "@ngneat/elf-persist-state";
+import {createStore, setProps, Store, withProps} from "@ngneat/elf";
 
 interface AuthCredentialsProps {
   clientId: string | null,
@@ -9,7 +8,7 @@ interface AuthCredentialsProps {
 
 @Injectable()
 export class AuthCredentialsRepository {
-  private readonly KEY = 'spotifyApiCredentials';
+  readonly KEY = 'spotifyApiCredentials';
 
   authCredentialsStore = this.initStore();
 
@@ -35,27 +34,10 @@ export class AuthCredentialsRepository {
     }
   }
 
-  batchUpdate(id: string, secret: string): void {
-    emitOnce(() => {
-      this.updateClientId(id);
-      this.updateClientSecret(secret);
-    });
-    persistState(this.authCredentialsStore, {
-      key: this.KEY,
-      storage: localStorageStrategy,
-    });
-  }
-
-  private updateClientId(id: string): void {
+  batchUpdateClientIdAndClientSecret(id: string, secret: string): void {
     this.authCredentialsStore.update(
       setProps({
-        clientId: id
-      })
-    );
-  }
-  private updateClientSecret(secret: string): void {
-    this.authCredentialsStore.update(
-      setProps({
+        clientId: id,
         clientSecret: secret
       })
     );

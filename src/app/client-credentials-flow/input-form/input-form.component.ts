@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthCredentialsRepository} from "./auth-credentials.repository";
-import {first} from "rxjs";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-input-form',
@@ -22,7 +22,7 @@ export class InputFormComponent implements OnInit {
   ngOnInit(): void {
     this.authCredentialsRepository.authCredentialsStore
       .pipe(
-        first()
+        take(1)
       )
       .subscribe(
         state => {
@@ -35,10 +35,11 @@ export class InputFormComponent implements OnInit {
   onSubmit(): void {
     if (this.apiSecretsFormGroup.value.clientId && this.apiSecretsFormGroup.value.clientSecret) {
       this.authCredentialsRepository
-        .batchUpdate(
+        .batchUpdateClientIdAndClientSecret(
           this.apiSecretsFormGroup.value.clientId,
           this.apiSecretsFormGroup.value.clientSecret
         );
+      localStorage.setItem(this.authCredentialsRepository.KEY, JSON.stringify(this.apiSecretsFormGroup.value));
     }
   }
 
