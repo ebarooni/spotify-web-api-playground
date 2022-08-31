@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthCredentialsRepository} from "./auth-credentials.repository";
-import {take} from "rxjs";
+import {filter, take} from "rxjs";
 
 @Component({
   selector: 'app-input-form',
@@ -10,8 +10,8 @@ import {take} from "rxjs";
 })
 export class InputFormComponent implements OnInit {
   apiSecretsFormGroup = this.fb.group({
-    clientId: ['', [Validators.minLength(5), Validators.required]],
-    clientSecret: ['', [Validators.minLength(5), Validators.required]]
+    clientId: ['', [Validators.required]],
+    clientSecret: ['', [Validators.required]]
   })
 
   constructor(
@@ -22,7 +22,8 @@ export class InputFormComponent implements OnInit {
   ngOnInit(): void {
     this.authCredentialsRepository.authCredentialsStore
       .pipe(
-        take(1)
+        take(1),
+        filter(state => state.clientId !== null && state.clientSecret !== null)
       )
       .subscribe(
         state => {
