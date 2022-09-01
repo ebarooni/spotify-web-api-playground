@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {AuthCredentialsProps, AuthCredentialsRepository} from "./auth-credentials.repository";
+import {AuthCredentialsProps, AuthCredentialsRepository} from "../../auth-credentials.repository";
 import {filter, take} from "rxjs";
 
 @Component({
@@ -13,7 +13,7 @@ export class InputFormComponent implements OnInit {
   apiSecretsFormGroup = this.fb.group({
     clientId: ['', [Validators.required]],
     clientSecret: ['', [Validators.required]]
-  })
+  });
 
   constructor(
     private readonly fb: FormBuilder,

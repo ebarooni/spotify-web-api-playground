@@ -9,7 +9,7 @@ export interface AuthCredentialsProps {
 @Injectable()
 export class AuthCredentialsRepository {
   readonly KEY = 'spotifyApiCredentials';
-
+  readonly AUTH_CREDENTIALS_STORE = 'authCredentials';
   authCredentialsStore = this.initStore();
 
   private initStore(): Store<{name: string, state: AuthCredentialsProps, config: undefined}, AuthCredentialsProps> {
@@ -17,7 +17,7 @@ export class AuthCredentialsRepository {
     if (pastState) {
       const parsedPastState = JSON.parse(pastState);
       return createStore(
-        {name: 'authCredentials'},
+        {name: this.AUTH_CREDENTIALS_STORE},
         withProps<AuthCredentialsProps>({
           clientId: parsedPastState.clientId,
           clientSecret: parsedPastState.clientSecret
@@ -25,7 +25,7 @@ export class AuthCredentialsRepository {
       );
     } else {
       return createStore(
-        {name: 'authCredentials'},
+        {name: this.AUTH_CREDENTIALS_STORE},
         withProps<AuthCredentialsProps>({
           clientId: null,
           clientSecret: null

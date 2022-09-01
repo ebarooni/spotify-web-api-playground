@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
-import {catchError, Observable, Subject, tap, throwError} from "rxjs";
-import * as moment from "moment";
-
-export interface ClientCredentialsFlowResponse {
-  access_token: string,
-  expires_in: number,
-  token_type: string
-}
+import {catchError, Observable, Subject, throwError} from "rxjs";
+import {AccessTokenProps, AccessTokenRepository} from "./access-token.repository";
 
 @Injectable()
 export class ClientCredentialsFlowService {
@@ -15,7 +9,10 @@ export class ClientCredentialsFlowService {
   private readonly URL = 'https://accounts.spotify.com/api/token';
   private readonly BODY_PARAMS = new HttpParams({fromObject: {grant_type: 'client_credentials'}});
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private readonly http: HttpClient,
+    private readonly accessTokenRepository: AccessTokenRepository
+  ) { }
 
   get errorHandlerSubject$(): Observable<HttpErrorResponse> {
     return this.errorHandlerSubject.asObservable();
@@ -28,23 +25,15 @@ export class ClientCredentialsFlowService {
     });
   }
 
-  sendAuthRequest(clientId: string, clientSecret: string): Observable<ClientCredentialsFlowResponse> {
-    return this.http.post<ClientCredentialsFlowResponse>(
+  sendAuthRequest(clientId: string, clientSecret: string): void {
+    this.http.post<AccessTokenProps>(
       this.URL,
       this.BODY_PARAMS,
       {headers: this.generateHttpHeaders(clientId, clientSecret)}
     ).pipe(
       catchError((err) => this.errorHandler(err)),
-      tap(response => localStorage.setItem(
-        'access_token_info',
-        JSON.stringify(
-          {
-            access_token: response.access_token,
-            received_at: moment.now(),
-            token_type: response.token_type
-          }
-        )
-      ))
+    ).subscribe(
+      response => this.accessTokenRepository.batchUpdateAccessTokenRepositoryStore(response)
     );
   }
 
