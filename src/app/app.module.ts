@@ -16,6 +16,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { ErrorTableComponent } from './table/error-table/error-table.component';
 import {AuthCredentialsRepository} from "./auth-credentials.repository";
 import { WikiComponent } from './client-credentials-flow/wiki/wiki.component';
+import { SocialMediaIconsComponent } from './footer/social-media-icons/social-media-icons.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { WikiComponent } from './client-credentials-flow/wiki/wiki.component';
     InputFormComponent,
     ClientCredentialsFlowComponent,
     ErrorTableComponent,
-    WikiComponent
+    WikiComponent,
+    SocialMediaIconsComponent
   ],
   imports: [
     BrowserModule,
