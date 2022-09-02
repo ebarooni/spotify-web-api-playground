@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthCredentialsProps, AuthCredentialsRepository} from "../../auth-credentials.repository";
-import {filter, take} from "rxjs";
+import {filter, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-input-form',
@@ -14,6 +14,7 @@ export class InputFormComponent implements OnInit {
     clientId: ['', [Validators.required]],
     clientSecret: ['', [Validators.required]]
   });
+  private readonly subs = new Subscription();
 
   constructor(
     private readonly fb: FormBuilder,
@@ -21,17 +22,18 @@ export class InputFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authCredentialsRepository.authCredentialsStore
-      .pipe(
-        take(1),
-        filter(state => state.clientId !== null && state.clientSecret !== null)
-      )
-      .subscribe(
-        state => {
-          this.apiSecretsFormGroup.get('clientId')?.setValue(state.clientId);
-          this.apiSecretsFormGroup.get('clientSecret')?.setValue(state.clientSecret);
-        }
-      )
+    this.subs.add(
+      this.authCredentialsRepository.authCredentialsStore
+        .pipe(
+          filter(state => state.clientId !== null && state.clientSecret !== null)
+        )
+        .subscribe(
+          state => {
+            this.apiSecretsFormGroup.get('clientId')?.setValue(state.clientId);
+            this.apiSecretsFormGroup.get('clientSecret')?.setValue(state.clientSecret);
+          }
+        )
+    );
   }
 
   onSubmit(): void {

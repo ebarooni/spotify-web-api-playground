@@ -17,6 +17,7 @@ import { ErrorTableComponent } from './table/error-table/error-table.component';
 import {AuthCredentialsRepository} from "./auth-credentials.repository";
 import { WikiComponent } from './client-credentials-flow/wiki/wiki.component';
 import { SocialMediaIconsComponent } from './footer/social-media-icons/social-media-icons.component';
+import { DeleteCredentialsComponent } from './client-credentials-flow/delete-credentials/delete-credentials.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SocialMediaIconsComponent } from './footer/social-media-icons/social-me
     ClientCredentialsFlowComponent,
     ErrorTableComponent,
     WikiComponent,
-    SocialMediaIconsComponent
+    SocialMediaIconsComponent,
+    DeleteCredentialsComponent
   ],
   imports: [
     BrowserModule,

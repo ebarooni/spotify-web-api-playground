@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   imports: [
@@ -11,14 +12,16 @@ import {MatDividerModule} from "@angular/material/divider";
     FontAwesomeModule,
     MatButtonModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ],
   exports: [
     BrowserAnimationsModule,
     FontAwesomeModule,
     MatButtonModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatIconModule
   ]
 })
 export class MaterialModule {}
