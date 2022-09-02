@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {catchError, Observable, Subject, throwError} from "rxjs";
-import {AccessTokenProps, AccessTokenRepository} from "./access-token.repository";
+import {AccessTokenProps} from "./access-token.repository";
 
 @Injectable()
 export class ClientCredentialsFlowService {
@@ -10,8 +10,7 @@ export class ClientCredentialsFlowService {
   private readonly BODY_PARAMS = new HttpParams({fromObject: {grant_type: 'client_credentials'}});
 
   constructor(
-    private readonly http: HttpClient,
-    private readonly accessTokenRepository: AccessTokenRepository
+    private readonly http: HttpClient
   ) { }
 
   get errorHandlerSubject$(): Observable<HttpErrorResponse> {
@@ -25,16 +24,14 @@ export class ClientCredentialsFlowService {
     });
   }
 
-  sendAuthRequest(clientId: string, clientSecret: string): void {
-    this.http.post<AccessTokenProps>(
+  sendAuthRequest(clientId: string, clientSecret: string): Observable<AccessTokenProps> {
+    return this.http.post<AccessTokenProps>(
       this.URL,
       this.BODY_PARAMS,
       {headers: this.generateHttpHeaders(clientId, clientSecret)}
     ).pipe(
       catchError((err) => this.errorHandler(err)),
-    ).subscribe(
-      response => this.accessTokenRepository.batchUpdateAccessTokenRepositoryStore(response)
-    );
+    )
   }
 
   private errorHandler(error: HttpErrorResponse) {
