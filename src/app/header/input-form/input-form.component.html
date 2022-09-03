@@ -31,13 +31,20 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="row mx-auto">
-        <button type="submit"
-                mat-raised-button
-                [color]="'primary'"
-                [disabled]="!apiCredentialsFormGroup.valid">
-          Apply credentials
-        </button>
+      <div class="row g-2 mx-auto">
+        <div class="col-md-6">
+          <div class="row mx-auto">
+            <button type="submit"
+                    mat-raised-button
+                    [color]="'primary'"
+                    [disabled]="!apiCredentialsFormGroup.valid">
+              Apply credentials
+            </button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <app-delete-credentials (credentialsDeleteRequestEmitter)="resetAuthCredentialsStore()"></app-delete-credentials>
+        </div>
       </div>
     </form>
   </div>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AuthCredentialsStore} from "./auth-credentials.store";
-import {Subscription, take} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-input-form',
@@ -47,9 +47,6 @@ export class InputFormComponent implements OnInit {
   ngOnInit(): void {
     this.subs.add(
       this.authCredentialsStore.authCredentialsStore
-        .pipe(
-          take(1)
-        )
         .subscribe(
           state => {
             this.apiCredentialsFormGroup.get('clientId')?.setValue(state.clientId);
@@ -69,6 +66,10 @@ export class InputFormComponent implements OnInit {
           this.apiCredentialsFormGroup.value.scope ? this.apiCredentialsFormGroup.value.scope : []
         );
     }
+  }
+
+  resetAuthCredentialsStore(): void {
+    this.authCredentialsStore.updateAuthCredentialsStore(null, null, []);
   }
 
 }

@@ -37,7 +37,7 @@ export class AuthCredentialsStore {
     }
   }
 
-  updateAuthCredentialsStore(id: string, secret: string, scope: string[]): void {
+  updateAuthCredentialsStore(id: string | null, secret: string | null, scope: string[]): void {
     this.authCredentialsStore.update(
       setProps({
         clientId: id,
@@ -45,9 +45,13 @@ export class AuthCredentialsStore {
         scope: scope
       })
     );
-    localStorage.setItem(
-      this.KEY,
-      JSON.stringify(<AuthCredentialsProps>{clientId: id, clientSecret: secret, scope: scope})
-    );
+    if (id === null && secret === null && scope.length === 0) {
+      localStorage.removeItem(this.KEY);
+    } else {
+      localStorage.setItem(
+        this.KEY,
+        JSON.stringify(<AuthCredentialsProps>{clientId: id, clientSecret: secret, scope: scope})
+      );
+    }
   }
 }
