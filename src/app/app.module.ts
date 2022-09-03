@@ -18,6 +18,7 @@ import {AuthCredentialsRepository} from "./auth-credentials.repository";
 import { WikiComponent } from './client-credentials-flow/wiki/wiki.component';
 import { SocialMediaIconsComponent } from './footer/social-media-icons/social-media-icons.component';
 import { DeleteCredentialsComponent } from './client-credentials-flow/delete-credentials/delete-credentials.component';
+import { ImplicitGrantFlowComponent } from './implicit-grant-flow/implicit-grant-flow.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DeleteCredentialsComponent } from './client-credentials-flow/delete-cre
     ErrorTableComponent,
     WikiComponent,
     SocialMediaIconsComponent,
-    DeleteCredentialsComponent
+    DeleteCredentialsComponent,
+    ImplicitGrantFlowComponent
   ],
   imports: [
     BrowserModule,
