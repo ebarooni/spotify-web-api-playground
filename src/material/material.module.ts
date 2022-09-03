@@ -5,6 +5,10 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
+import {MatCardModule} from "@angular/material/card";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   imports: [
@@ -13,7 +17,11 @@ import {MatIconModule} from "@angular/material/icon";
     MatButtonModule,
     MatTooltipModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -21,7 +29,11 @@ import {MatIconModule} from "@angular/material/icon";
     MatButtonModule,
     MatTooltipModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule {}

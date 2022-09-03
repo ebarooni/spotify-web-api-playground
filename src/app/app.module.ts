@@ -10,15 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
-import { InputFormComponent } from './client-credentials-flow/input-form/input-form.component';
+import { InputFormComponent } from './header/input-form/input-form.component';
 import { ClientCredentialsFlowComponent } from './client-credentials-flow/client-credentials-flow.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ErrorTableComponent } from './table/error-table/error-table.component';
-import {AuthCredentialsRepository} from "./auth-credentials.repository";
-import { WikiComponent } from './client-credentials-flow/wiki/wiki.component';
+import {AuthCredentialsStore} from "./header/input-form/auth-credentials.store";
+import { WikiComponent } from './header/wiki/wiki.component';
 import { SocialMediaIconsComponent } from './footer/social-media-icons/social-media-icons.component';
 import { DeleteCredentialsComponent } from './client-credentials-flow/delete-credentials/delete-credentials.component';
 import { ImplicitGrantFlowComponent } from './implicit-grant-flow/implicit-grant-flow.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ImplicitGrantFlowComponent } from './implicit-grant-flow/implicit-grant
     WikiComponent,
     SocialMediaIconsComponent,
     DeleteCredentialsComponent,
-    ImplicitGrantFlowComponent
+    ImplicitGrantFlowComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,7 @@ import { ImplicitGrantFlowComponent } from './implicit-grant-flow/implicit-grant
     ReactiveFormsModule
   ],
   providers: [
-    AuthCredentialsRepository
+    AuthCredentialsStore
   ],
   bootstrap: [AppComponent]
 })

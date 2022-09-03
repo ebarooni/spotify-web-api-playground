@@ -3,13 +3,14 @@ import {createStore, setProps, Store, withProps} from "@ngneat/elf";
 
 export interface AuthCredentialsProps {
   clientId: string | null,
-  clientSecret: string | null
+  clientSecret: string | null,
+  scope: string[]
 }
 
 @Injectable()
-export class AuthCredentialsRepository {
+export class AuthCredentialsStore {
   readonly KEY = 'spotifyApiCredentials';
-  readonly AUTH_CREDENTIALS_STORE = 'authCredentials';
+  readonly AUTH_CREDENTIALS_STORE = 'authCredentialsRepository';
   authCredentialsStore = this.initStore();
 
   private initStore(): Store<{name: string, state: AuthCredentialsProps, config: undefined}, AuthCredentialsProps> {
@@ -20,7 +21,8 @@ export class AuthCredentialsRepository {
         {name: this.AUTH_CREDENTIALS_STORE},
         withProps<AuthCredentialsProps>({
           clientId: parsedPastState.clientId,
-          clientSecret: parsedPastState.clientSecret
+          clientSecret: parsedPastState.clientSecret,
+          scope: parsedPastState.scope ? parsedPastState.scope : []
         })
       );
     } else {
@@ -28,22 +30,24 @@ export class AuthCredentialsRepository {
         {name: this.AUTH_CREDENTIALS_STORE},
         withProps<AuthCredentialsProps>({
           clientId: null,
-          clientSecret: null
+          clientSecret: null,
+          scope: []
         })
       );
     }
   }
 
-  batchUpdateClientIdAndClientSecret(id: string, secret: string): void {
+  updateAuthCredentialsStore(id: string, secret: string, scope: string[]): void {
     this.authCredentialsStore.update(
       setProps({
         clientId: id,
-        clientSecret: secret
+        clientSecret: secret,
+        scope: scope
       })
     );
     localStorage.setItem(
       this.KEY,
-      JSON.stringify(<AuthCredentialsProps>{clientId: id, clientSecret: secret})
+      JSON.stringify(<AuthCredentialsProps>{clientId: id, clientSecret: secret, scope: scope})
     );
   }
 }
