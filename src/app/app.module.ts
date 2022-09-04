@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { InputFormComponent } from './header/input-form/input-form.component';
-import { ClientCredentialsFlowComponent } from './client-credentials-flow/client-credentials-flow.component';
+import { ClientCredentialsComponent } from './flows/client-credentials/client-credentials.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ErrorTableComponent } from './table/error-table/error-table.component';
 import {AuthCredentialsStore} from "./header/input-form/auth-credentials.store";
@@ -20,6 +20,8 @@ import { SocialMediaIconsComponent } from './footer/social-media-icons/social-me
 import { DeleteCredentialsComponent } from './header/input-form/delete-credentials/delete-credentials.component';
 import { ImplicitGrantFlowComponent } from './implicit-grant-flow/implicit-grant-flow.component';
 import { HeaderComponent } from './header/header.component';
+import { FlowsComponent } from './flows/flows.component';
+import { PlaceholderComponent } from './flows/placeholder/placeholder.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,15 @@ import { HeaderComponent } from './header/header.component';
     NavbarComponent,
     TableComponent,
     InputFormComponent,
-    ClientCredentialsFlowComponent,
+    ClientCredentialsComponent,
     ErrorTableComponent,
     WikiComponent,
     SocialMediaIconsComponent,
     DeleteCredentialsComponent,
     ImplicitGrantFlowComponent,
-    HeaderComponent
+    HeaderComponent,
+    FlowsComponent,
+    PlaceholderComponent
   ],
   imports: [
     BrowserModule,
