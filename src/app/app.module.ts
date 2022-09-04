@@ -13,7 +13,6 @@ import { TableComponent } from './table/table.component';
 import { InputFormComponent } from './header/input-form/input-form.component';
 import { ClientCredentialsComponent } from './flows/client-credentials/client-credentials.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import { ErrorTableComponent } from './table/error-table/error-table.component';
 import {AuthCredentialsStore} from "./header/input-form/auth-credentials.store";
 import { WikiComponent } from './header/wiki/wiki.component';
 import { SocialMediaIconsComponent } from './footer/social-media-icons/social-media-icons.component';
@@ -33,7 +32,6 @@ import { PlaceholderComponent } from './flows/placeholder/placeholder.component'
     TableComponent,
     InputFormComponent,
     ClientCredentialsComponent,
-    ErrorTableComponent,
     WikiComponent,
     SocialMediaIconsComponent,
     DeleteCredentialsComponent,

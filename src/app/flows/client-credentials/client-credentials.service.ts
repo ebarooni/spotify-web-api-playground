@@ -1,21 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
-import {catchError, Observable, Subject, throwError} from "rxjs";
-import {AccessTokenProps} from "./access-token.repository";
+import {catchError, Observable, of} from "rxjs";
 
 @Injectable()
-export class ClientCredentialsFlowService {
-  private readonly errorHandlerSubject = new Subject<HttpErrorResponse>();
+export class ClientCredentialsService {
   private readonly URL = 'https://accounts.spotify.com/api/token';
   private readonly BODY_PARAMS = new HttpParams({fromObject: {grant_type: 'client_credentials'}});
 
   constructor(
     private readonly http: HttpClient
   ) { }
-
-  get errorHandlerSubject$(): Observable<HttpErrorResponse> {
-    return this.errorHandlerSubject.asObservable();
-  }
 
   private generateHttpHeaders(clientId: string, clientSecret: string): HttpHeaders {
     return new HttpHeaders({
@@ -24,8 +18,8 @@ export class ClientCredentialsFlowService {
     });
   }
 
-  sendAuthRequest(clientId: string, clientSecret: string): Observable<AccessTokenProps> {
-    return this.http.post<AccessTokenProps>(
+  sendAuthRequest(clientId: string, clientSecret: string): Observable<any> {
+    return this.http.post(
       this.URL,
       this.BODY_PARAMS,
       {headers: this.generateHttpHeaders(clientId, clientSecret)}
@@ -34,8 +28,7 @@ export class ClientCredentialsFlowService {
     )
   }
 
-  private errorHandler(error: HttpErrorResponse) {
-    this.errorHandlerSubject.next(error);
-    return throwError(() => new Error(error.message));
+  private errorHandler(error: HttpErrorResponse): Observable<HttpErrorResponse> {
+    return of(error);
   }
 }

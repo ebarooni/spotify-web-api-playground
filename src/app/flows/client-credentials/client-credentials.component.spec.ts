@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientCredentialsFlowComponent } from './client-credentials-flow.component';
+import { ClientCredentialsComponent } from './client-credentials.component';
 
 describe('ClientCredentialsFlowComponent', () => {
-  let component: ClientCredentialsFlowComponent;
-  let fixture: ComponentFixture<ClientCredentialsFlowComponent>;
+  let component: ClientCredentialsComponent;
+  let fixture: ComponentFixture<ClientCredentialsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClientCredentialsFlowComponent ]
+      declarations: [ ClientCredentialsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ClientCredentialsFlowComponent);
+    fixture = TestBed.createComponent(ClientCredentialsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
