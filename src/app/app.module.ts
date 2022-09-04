@@ -17,7 +17,7 @@ import { ErrorTableComponent } from './table/error-table/error-table.component';
 import {AuthCredentialsStore} from "./header/input-form/auth-credentials.store";
 import { WikiComponent } from './header/wiki/wiki.component';
 import { SocialMediaIconsComponent } from './footer/social-media-icons/social-media-icons.component';
-import { DeleteCredentialsComponent } from './client-credentials-flow/delete-credentials/delete-credentials.component';
+import { DeleteCredentialsComponent } from './header/input-form/delete-credentials/delete-credentials.component';
 import { ImplicitGrantFlowComponent } from './implicit-grant-flow/implicit-grant-flow.component';
 import { HeaderComponent } from './header/header.component';
 
