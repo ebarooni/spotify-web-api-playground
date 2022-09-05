@@ -1,15 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {DashboardComponent} from "../app/dashboard/dashboard.component";
 
-const routes: Routes = [
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    title: 'Dashboard | Spotify web API'
-  },
-]
+const routes: Routes = []
 
 @NgModule({
   declarations: [],

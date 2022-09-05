@@ -3,6 +3,13 @@
 
   </div>
   <mat-action-row>
-    <app-login></app-login>
+    <div *ngIf="credentials$ | async as credentials">
+      <button [disabled]="credentials.clientId === null || credentials.clientSecret === null"
+              class="btn btn-success"
+              type="button"
+              (click)="implicitGrantService.redirectToSpotifyAuthEndpoint(credentials.clientId ? credentials.clientId : null, credentials.scope ? credentials.scope : null)">
+        Login to Spotify
+      </button>
+    </div>
   </mat-action-row>
 </div>

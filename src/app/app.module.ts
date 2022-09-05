@@ -5,8 +5,6 @@ import { AppComponent } from './app.component';
 import {MaterialModule} from "../material/material.module";
 import {HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from '../app-routing/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './flows/implicit-grant/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
@@ -25,8 +23,6 @@ import { ImplicitGrantComponent } from './flows/implicit-grant/implicit-grant.co
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    LoginComponent,
     FooterComponent,
     NavbarComponent,
     TableComponent,
