@@ -4,6 +4,13 @@
       Spotify API credentials
     </mat-card-title>
     <form [formGroup]="apiCredentialsFormGroup" (ngSubmit)="onSubmit()">
+      <div *ngIf="authCredentials$ | async as credentials">
+        <div *ngIf="credentials.clientId !== apiCredentialsFormGroup.get('clientId')?.value || credentials.clientSecret !== apiCredentialsFormGroup.get('clientSecret')?.value"
+             class="alert alert-warning"
+             role="alert">
+          You have unsaved changes!
+        </div>
+      </div>
       <div class="row">
         <mat-form-field>
           <mat-label>Client ID</mat-label>

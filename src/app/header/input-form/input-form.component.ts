@@ -10,6 +10,7 @@ import {Subscription} from "rxjs";
 })
 export class InputFormComponent implements OnInit {
   private readonly initScope: string[] = [];
+  readonly authCredentials$ = this.authCredentialsStore.authCredentialsStore;
   readonly availableScopes = [
     'ugc-image-upload',
     'user-modify-playback-state',
@@ -45,7 +46,7 @@ export class InputFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs.add(
-      this.authCredentialsStore.authCredentialsStore
+      this.authCredentials$
         .subscribe(
           state => {
             this.apiCredentialsFormGroup.get('clientId')?.setValue(state.clientId);
