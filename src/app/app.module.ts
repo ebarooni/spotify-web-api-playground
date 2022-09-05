@@ -17,10 +17,10 @@ import {AuthCredentialsStore} from "./header/input-form/auth-credentials.store";
 import { WikiComponent } from './header/wiki/wiki.component';
 import { SocialMediaIconsComponent } from './footer/social-media-icons/social-media-icons.component';
 import { DeleteCredentialsComponent } from './header/input-form/delete-credentials/delete-credentials.component';
-import { ImplicitGrantFlowComponent } from './implicit-grant-flow/implicit-grant-flow.component';
 import { HeaderComponent } from './header/header.component';
 import { FlowsComponent } from './flows/flows.component';
 import { PlaceholderComponent } from './flows/placeholder/placeholder.component';
+import { ImplicitGrantComponent } from './flows/implicit-grant/implicit-grant.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +35,10 @@ import { PlaceholderComponent } from './flows/placeholder/placeholder.component'
     WikiComponent,
     SocialMediaIconsComponent,
     DeleteCredentialsComponent,
-    ImplicitGrantFlowComponent,
     HeaderComponent,
     FlowsComponent,
-    PlaceholderComponent
+    PlaceholderComponent,
+    ImplicitGrantComponent
   ],
   imports: [
     BrowserModule,
