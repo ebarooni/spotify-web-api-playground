@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientCredentialsService} from "./client-credentials.service";
+import {AccessTokenResponse, ClientCredentialsService} from "./client-credentials.service";
 import {AuthCredentialsStore} from "../../header/input-form/auth-credentials.store";
 import {Observable} from "rxjs";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-client-credentials',
@@ -10,7 +11,7 @@ import {Observable} from "rxjs";
   providers: [ClientCredentialsService]
 })
 export class ClientCredentialsComponent implements OnInit {
-  apiResponse$?: Observable<any>;
+  apiResponse$?: Observable<AccessTokenResponse | HttpErrorResponse>;
   readonly credentials$ = this.authCredentialsStore.authCredentialsStore;
 
   constructor(

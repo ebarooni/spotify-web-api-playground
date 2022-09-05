@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  @Input() data?: any;
+  @Input() data?: any;  // AccessTokenResponse | HttpErrorResponse
 
   constructor() { }
 
