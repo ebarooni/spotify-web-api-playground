@@ -3,6 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {AuthCredentialsStore} from "../../header/input-form/auth-credentials.store";
 import {ImplicitGrantService} from "./implicit-grant.service";
 import {filter, map} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {ImplicitGrantDialogComponent} from "./implicit-grant-dialog/implicit-grant-dialog.component";
 
 export interface ImplicitGrantResponse {
   access_token: string,
@@ -30,7 +32,8 @@ export class ImplicitGrantComponent implements OnInit {
   constructor(
     readonly implicitGrantService: ImplicitGrantService,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly authCredentialsStore: AuthCredentialsStore
+    private readonly authCredentialsStore: AuthCredentialsStore,
+    private readonly dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +59,7 @@ export class ImplicitGrantComponent implements OnInit {
         };
         this.codeVerifier = localStorage.getItem('code_verifier') ? localStorage.getItem('code_verifier') : null;
         this.implicitGrantService.clearBrowserUrl();
+        this.openDialog();
       }
     });
     this.activatedRoute.queryParams.subscribe(params => {
@@ -68,8 +72,13 @@ export class ImplicitGrantComponent implements OnInit {
         };
         this.codeVerifier = localStorage.getItem('code_verifier') ? localStorage.getItem('code_verifier') : null;
         this.implicitGrantService.clearBrowserUrl();
+        this.openDialog();
       }
     });
+  }
+
+  private openDialog(): void {
+    this.dialog.open(ImplicitGrantDialogComponent);
   }
 
 }
