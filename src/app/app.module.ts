@@ -20,6 +20,7 @@ import { FlowsComponent } from './flows/flows.component';
 import { PlaceholderComponent } from './flows/placeholder/placeholder.component';
 import { ImplicitGrantComponent } from './flows/implicit-grant/implicit-grant.component';
 import { ImplicitGrantDialogComponent } from './flows/implicit-grant/implicit-grant-dialog/implicit-grant-dialog.component';
+import { AuthorizationCodeComponent } from './flows/authorization-code/authorization-code.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ImplicitGrantDialogComponent } from './flows/implicit-grant/implicit-gr
     FlowsComponent,
     PlaceholderComponent,
     ImplicitGrantComponent,
-    ImplicitGrantDialogComponent
+    ImplicitGrantDialogComponent,
+    AuthorizationCodeComponent
   ],
   imports: [
     BrowserModule,
