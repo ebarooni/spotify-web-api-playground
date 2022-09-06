@@ -1,0 +1,58 @@
+<div class="card border border-0">
+  <div class="card-body">
+    <mat-card-title class="text-center">
+      Spotify API credentials
+    </mat-card-title>
+    <form [formGroup]="apiCredentialsFormGroup" (ngSubmit)="onSubmit()">
+      <div *ngIf="authCredentials$ | async as credentials">
+        <div *ngIf="credentials.clientId !== apiCredentialsFormGroup.get('clientId')?.value || credentials.clientSecret !== apiCredentialsFormGroup.get('clientSecret')?.value"
+             class="alert alert-warning"
+             role="alert">
+          You have unsaved changes!
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Client ID</mat-label>
+          <input matInput
+                 type="text"
+                 placeholder="Please enter your Client ID"
+                 [formControlName]="'clientId'">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Client secret</mat-label>
+          <input matInput
+                 placeholder="Please enter your client secret"
+                 type="password"
+                 [formControlName]="'clientSecret'" >
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Scope</mat-label>
+          <mat-select [formControlName]="'scope'"
+                      multiple>
+            <mat-option *ngFor="let scope of availableScopes" [value]="scope">{{scope}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row g-2 mx-auto">
+        <div class="col-md-6">
+          <div class="row mx-auto">
+            <button type="submit"
+                    mat-raised-button
+                    [color]="'primary'"
+                    [disabled]="!apiCredentialsFormGroup.valid">
+              Apply credentials
+            </button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <app-delete-credentials (credentialsDeleteRequestEmitter)="resetAuthCredentialsStore()"></app-delete-credentials>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<mat-card class="shadow-lg mb-2">
+  <mat-card-content>
+    <mat-accordion multi>
+      <!--Authorization code flow-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Authorization Code Flow
+          </mat-panel-title>
+          <mat-panel-description class="justify-content-between">
+            Client/Server-side authentication
+            <span>
+              <mat-icon matTooltip="Client-side">support_agent</mat-icon>
+              <mat-icon matTooltip="Server-side">dns</mat-icon>
+            </span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-authorization-code></app-authorization-code>
+      </mat-expansion-panel>
+      <!--Implicit grant flow-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Implicit Grant Flow
+          </mat-panel-title>
+          <mat-panel-description class="justify-content-between">
+            Client-side authentication
+            <mat-icon matTooltip="Client-side">support_agent</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-implicit-grant></app-implicit-grant>
+      </mat-expansion-panel>
+      <!--Client credentials flow-->
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Client Credentials Flow
+          </mat-panel-title>
+          <mat-panel-description class="justify-content-between">
+            Server-to-server authentication
+            <mat-icon matTooltip="Server-side">dns</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-client-credentials></app-client-credentials>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>

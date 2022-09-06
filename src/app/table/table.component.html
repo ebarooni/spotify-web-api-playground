@@ -1,4 +1,4 @@
-<div class="row" *ngIf="data$ | async as accessTokenObject; else errorTable">
+<div class="row" *ngIf="data">
   <div class="table-responsive">
     <table class="table table-hover table-bordered">
       <caption class="text-center">Spotify web API response</caption>
@@ -9,7 +9,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let keyValuePair of accessTokenObject | keyvalue">
+      <tr *ngFor="let keyValuePair of data | keyvalue">
         <td>{{keyValuePair.key}}</td>
         <td class="text-break">{{keyValuePair.value}}</td>
       </tr>
@@ -17,6 +17,3 @@
     </table>
   </div>
 </div>
-<ng-template #errorTable>
-  <app-error-table [error$]="errorHandler$"></app-error-table>
-</ng-template>

@@ -2,11 +2,12 @@
   <div class="flex-fill">
     <!--Navbar-->
     <app-navbar></app-navbar>
-    <!--The table starts here-->
+    <!--The body starts here-->
     <div class="container-lg">
-      <app-client-credentials-flow></app-client-credentials-flow>
-      <app-implicit-grant-flow></app-implicit-grant-flow>
-      <router-outlet></router-outlet>
+      <!--Header component-->
+      <app-header></app-header>
+      <!--Flows component that contains 3 authorization flows-->
+      <app-flows></app-flows>
     </div>
   </div>
   <!--Footer-->
