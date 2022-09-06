@@ -26,11 +26,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@ngneat/effects-ng": "^2.0.0",
     "@ngneat/elf": "^2.1.0",
-    "@ngneat/elf-entities": "^4.4.2",
-    "@ngneat/elf-persist-state": "^1.1.5",
-    "@ngneat/elf-requests": "^1.1.4",
     "bootstrap": "^5.2.0",
-    "moment": "^2.29.4",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

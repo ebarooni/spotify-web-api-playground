@@ -1,6 +1,20 @@
 <div class="card mb-2 border border-0">
   <div class="card-body">
-
+    <div class="row mt-4">
+      <div *ngIf="data; else placeHolder">
+        <app-table [data]="data"></app-table>
+        <div *ngIf="data.state === codeVerifier"
+             class="alert alert-success"
+             role="alert">
+          The sate is matching with the "code_verifier" used to redirect you to Spotify (check local storage)
+        </div>
+      </div>
+    </div>
+    <ng-template #placeHolder>
+      <div>
+        <app-placeholder></app-placeholder>
+      </div>
+    </ng-template>
   </div>
   <mat-action-row>
     <div *ngIf="credentials$ | async as credentials">

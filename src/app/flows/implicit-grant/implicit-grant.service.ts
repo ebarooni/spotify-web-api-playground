@@ -54,4 +54,8 @@ export class ImplicitGrantService {
       );
     }
   }
+
+  clearBrowserUrl(): void {
+    this.document.defaultView?.history.replaceState({}, this.document.title, '/');
+  }
 }
