@@ -70,7 +70,7 @@ export class ImplicitGrantComponent implements OnInit {
           error: error,
           state: state
         };
-        this.codeVerifier = localStorage.getItem('code_verifier') ? localStorage.getItem('code_verifier') : null;
+        this.codeVerifier = localStorage.getItem('code_verifier_implicit_grant') ? localStorage.getItem('code_verifier') : null;
         this.implicitGrantService.clearBrowserUrl();
         this.openDialog();
       }

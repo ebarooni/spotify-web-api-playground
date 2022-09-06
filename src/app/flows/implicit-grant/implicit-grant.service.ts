@@ -41,7 +41,7 @@ export class ImplicitGrantService {
   redirectToSpotifyAuthEndpoint(clientId: string | null, scope: string[] | null): void {
     if (clientId !== null) {
       const codeVerifier = ImplicitGrantService.generateRandomString(64);
-      localStorage.setItem('code_verifier', codeVerifier);
+      localStorage.setItem('code_verifier_implicit_grant', codeVerifier);
       this.document.location.href = ImplicitGrantService.generateUrlWithSearchParams(
         'https://accounts.spotify.com/authorize',
         {
