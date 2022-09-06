@@ -3,7 +3,7 @@ import {DOCUMENT} from "@angular/common";
 
 @Injectable()
 export class AuthorizationCodeService {
-  private readonly REDIRECT_URI = 'http://localhost:4200/';
+  private readonly REDIRECT_URI = 'https://spotify-web-api-playground.netlify.app/';
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
