@@ -2,11 +2,23 @@
   <div class="card-body">
     <div class="row mt-4">
       <div *ngIf="dataFirstStep; else placeHolder">
-        <app-table [data]="dataFirstStep"></app-table>
+        <div class="mb-2">
+          <h5 class="card-title">Request User Authorization</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Step 1/2</h6>
+        </div>
         <div *ngIf="dataFirstStep.state === codeVerifier"
              class="alert alert-success"
              role="alert">
           The sate is matching with the "code_verifier" used to redirect you to Spotify (check local storage)
+        </div>
+        <app-table [data]="dataFirstStep"></app-table>
+        <div *ngIf="apiResponse$ | async as data"
+             class="mt-4">
+          <div class="mb-2">
+            <h5 class="card-title">Request Access Token</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Step 2/2</h6>
+          </div>
+          <app-table [data]="data"></app-table>
         </div>
       </div>
     </div>
@@ -17,18 +29,18 @@
     </ng-template>
   </div>
   <mat-action-row>
-    <div class="hstack gap-2">
-      <div *ngIf="credentials$ | async as credentials">
-        <button [disabled]="credentials.clientId === null || credentials.clientSecret === null"
-                class="btn btn-success"
-                type="button"
-                (click)="authorizationCodeService.redirectToSpotifyAuthEndpoint(credentials.clientId ? credentials.clientId : null, credentials.scope ? credentials.scope : null)">
-          Login to Spotify
-        </button>
-      </div>
+    <div *ngIf="credentials$ | async as credentials"
+         class="hstack gap-2">
+      <button [disabled]="credentials.clientId === null || credentials.clientSecret === null"
+              class="btn btn-success"
+              type="button"
+              (click)="authorizationCodeService.redirectToSpotifyAuthEndpoint(credentials.clientId ? credentials.clientId : null, credentials.scope ? credentials.scope : null)">
+        Login to Spotify (step 1/2)
+      </button>
       <button [disabled]="!dataFirstStep || disableHttpRequest"
-              class="btn btn-outline-primary">
-        Send HTTP post request
+              class="btn btn-outline-primary"
+              (click)="sendHttpPostRequest(credentials.clientId!, credentials.clientSecret!)">
+        Send HTTP post request (step 2/2)
       </button>
     </div>
   </mat-action-row>
