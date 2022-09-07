@@ -10,6 +10,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatListModule} from "@angular/material/list";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    MatDividerModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -36,7 +40,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule {}

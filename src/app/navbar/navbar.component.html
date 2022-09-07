@@ -1,8 +1,16 @@
 <nav class="navbar navbar-dark bg-dark shadow-sm mb-4">
   <div class="container-xxl">
-    <a class="navbar-brand fs-5 fw-lighter mb-0">
+    <a class="navbar-brand fs-5 fw-lighter mb-0"
+       [routerLink]="'/'">
       <img src="/assets/brand-logo/Spotify_Logo_RGB_White.png" alt="" width="128px">
       web API playground<sup matTooltip="Unofficial and not associated with Spotify AB">*</sup>
     </a>
+    <div class="d-flex">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <app-version></app-version>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

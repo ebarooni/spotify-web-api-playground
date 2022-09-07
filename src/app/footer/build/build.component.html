@@ -1,0 +1,40 @@
+<mat-card class="mb-2 shadow-lg">
+  <mat-card-content>
+    <div class="row">
+      <div class="card col-md-6 mx-auto">
+        <div class="card-body">
+          <mat-list>
+            <div mat-subheader>General build information</div>
+            <mat-list-item class="flex-fill justify-content-between">
+              <mat-icon mat-list-icon>tag</mat-icon>
+              <div matLine class="text-end">Version</div>
+              <div matLine
+                   class="text-end text-primary">
+                {{version}}
+              </div>
+            </mat-list-item>
+            <mat-list-item class="flex-fill justify-content-between">
+              <mat-icon mat-list-icon>schedule</mat-icon>
+              <div matLine class="text-end">Last build</div>
+              <div matLine
+                   class="text-end text-primary">
+                {{ buildTime | date: 'short' }}
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <div mat-subheader>Dependencies</div>
+            <mat-list-item *ngFor="let dependency of dependencies | keyvalue"
+                           class="flex-fill justify-content-between">
+              <mat-icon mat-list-icon>code</mat-icon>
+              <div matLine class="text-end">{{dependency.key}}</div>
+              <div matLine
+                   class="text-end text-primary">
+                {{dependency.value}}
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

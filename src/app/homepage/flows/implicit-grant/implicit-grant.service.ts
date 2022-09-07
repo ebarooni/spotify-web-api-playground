@@ -1,9 +1,9 @@
-import {Inject, Injectable} from "@angular/core";
+import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../../environments/environment";
 
 @Injectable()
-export class AuthorizationCodeService {
+export class ImplicitGrantService {
   private readonly REDIRECT_URI = environment.redirectUri;
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
@@ -39,36 +39,21 @@ export class AuthorizationCodeService {
     }
   }
 
-  private static async generateCodeChallenge(codeVerifier: string): Promise<string> {
-    const digest = await crypto.subtle.digest(
-      'SHA-256',
-      new TextEncoder().encode(codeVerifier),
-    );
-
-    return btoa(String.fromCharCode(...new Uint8Array(digest)))
-      .replace(/=/g, '')
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_');
-  }
-
   redirectToSpotifyAuthEndpoint(clientId: string | null, scope: string[] | null): void {
-    const codeVerifier = AuthorizationCodeService.generateRandomString(64);
-    AuthorizationCodeService.generateCodeChallenge(codeVerifier)
-      .then((codeChallenge) => {
-        localStorage.setItem('code_verifier_authorization_code', codeVerifier);
-        this.document.location.href = AuthorizationCodeService.generateUrlWithSearchParams(
-          'https://accounts.spotify.com/authorize',
-          {
-            client_id: clientId,
-            response_type: 'code',
-            redirect_uri: this.REDIRECT_URI,
-            state: codeVerifier,
-            scope: AuthorizationCodeService.convertToSpaceSeparatedString(scope),
-            code_challenge_method: 'S256',
-            codeChallenge,
-          },
-        );
-      });
+    if (clientId !== null) {
+      const codeVerifier = ImplicitGrantService.generateRandomString(64);
+      localStorage.setItem('code_verifier_implicit_grant', codeVerifier);
+      this.document.location.href = ImplicitGrantService.generateUrlWithSearchParams(
+        'https://accounts.spotify.com/authorize',
+        {
+          client_id: clientId,
+          scope: ImplicitGrantService.convertToSpaceSeparatedString(scope),
+          response_type: 'token',
+          redirect_uri: this.REDIRECT_URI,
+          state: codeVerifier
+        },
+      );
+    }
   }
 
   clearBrowserUrl(): void {
