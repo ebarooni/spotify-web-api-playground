@@ -2,7 +2,9 @@
   <div class="container-xxl">
     <div class="row">
       <div class="col d-flex align-items-center">
-        <span class="text-muted">© {{currentYear}} Ehsan Barooni</span>
+        <span class="text-muted">
+          © {{currentYear}} Ehsan Barooni - <a [routerLink]="'/build'" class="link-primary">build</a>
+        </span>
       </div>
       <div class="col">
         <app-social-media-icons></app-social-media-icons>

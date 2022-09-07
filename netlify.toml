@@ -1,0 +1,7 @@
+[build]
+  publish = "dist/spotify-web-api-playground"
+  command = "ng build --configuration=production"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

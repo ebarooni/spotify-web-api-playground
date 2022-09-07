@@ -1,0 +1,3 @@
+export const version = '1.0.3';
+export const buildTime = 'Wed Sep 07 2022 16:20:00 GMT+0200 (Central European Summer Time)';
+export const deps = {"@angular/animations":"^14.0.0","@angular/cdk":"^14.2.0","@angular/common":"^14.0.0","@angular/compiler":"^14.0.0","@angular/core":"^14.0.0","@angular/forms":"^14.0.0","@angular/material":"^14.2.0","@angular/platform-browser":"^14.0.0","@angular/platform-browser-dynamic":"^14.0.0","@angular/router":"^14.0.0","@fortawesome/angular-fontawesome":"^0.11.1","@fortawesome/fontawesome-svg-core":"^6.1.1","@fortawesome/free-brands-svg-icons":"^6.1.1","@fortawesome/free-solid-svg-icons":"^6.2.0","@ngneat/effects-ng":"^2.0.0","@ngneat/elf":"^2.1.0","bootstrap":"^5.2.0","rxjs":"~7.5.0","tslib":"^2.3.0","zone.js":"~0.11.4"};
