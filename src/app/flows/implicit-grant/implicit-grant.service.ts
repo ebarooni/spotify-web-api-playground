@@ -1,9 +1,10 @@
 import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
+import {environment} from "../../../environments/environment";
 
 @Injectable()
 export class ImplicitGrantService {
-  private readonly REDIRECT_URI = 'https://spotify-web-api-playground.netlify.app/';
+  private readonly REDIRECT_URI = environment.redirectUri;
 
   constructor(@Inject(DOCUMENT) private document: Document) { }
 
