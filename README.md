@@ -1,27 +1,38 @@
-# SpotifyWebApiPlayground
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
+# About the project
 
-## Development server
+This is a playground made with Angular to interact with the Spotify web API.
+It is intended to be used for understading the API and its response to different HTTP requests.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+#### Built with
 
-## Code scaffolding
+- ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+- ![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+- ![Spotify](https://img.shields.io/badge/Spotify-1ED760?style=for-the-badge&logo=spotify&logoColor=white)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Demo
 
-## Build
+https://spotify-web-api-playground.netlify.app/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Getting started
+In order to be able to generate an access token, you need to have a valid cliend ID and secret. To obtain your client ID and secret, visit the Spotify web API [documentation](https://developer.spotify.com/documentation/web-api/).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+#### Prerequisites ([quick start](https://developer.spotify.com/documentation/web-api/quick-start/))
+1. Set up a Spotify account (free or premium)
+2. Register an application
+3. Copy your API credentials from your app's overview page
+4. Enter your API credentials in the website's input fields
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Acknowledgements
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
+- [Spotify Web Authorization with PKCE](https://github.com/tobika/spotify-auth-PKCE-example)
+- [Spotify Accounts Authentication Examples](https://github.com/spotify/web-api-auth-examples)
+
+
+## Disclaimer
+
+The API credentials that you use in this website are **only** used for communicating with the Spotify API and are **not stored anywhere** but your own browser's **local storage**.
